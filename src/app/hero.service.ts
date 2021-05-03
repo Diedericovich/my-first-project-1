@@ -9,6 +9,14 @@ import {HEROES} from './mock-heroes';
 })
 export class HeroService {
 
+  // Typescript voor: Task<Hero> GetHero (int id) {...}
+  getHero(id: number): Observable<Hero> {
+    const hero = HEROES.find(x => x.id === id) as Hero;
+    this.messagesService.addMessage(`HeroService: Fetched hero id: ${id}`);
+
+    return of(hero);
+  }
+
   constructor(private messagesService: MessagesService) { }
 
   getHeroes(): Observable<Hero[]>{

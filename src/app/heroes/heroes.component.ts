@@ -24,15 +24,8 @@ constructor(
   
   ngOnInit(): void {
     this.getHeroes();
-    
-  }
-  OnSelect(hero: Hero) {
-    this.selectedHero = hero;
-    this.messagesService.addMessage(`HeroService: Clicked on: ${hero.id} ${hero.name}`);
   }
 
-  // Get data async from dataserver
-  // Subscribe => Wait until method has been completed, then perform action
   getHeroes(): void {
     // als je de methode hebt ingeladen, voer je de lijst locaal in (via subscribe) (in de UI)
     //best practice als je met database of API gaat werken
@@ -40,20 +33,29 @@ constructor(
       .subscribe(x => this.heroes = x);
   }
 
-  HandleClicked() {
-    if (this.selectedHero) {
-      if (this.clicked % 2 === 0) {
-        this.selectedHero.imagePath = "http://placekitten.com/400/600"
-        this.isImageVisible = true;
-      }
-      else {
-        this.selectedHero.imagePath = "http://placekitten.com/600/400"
-        this.isImageVisible = false;
-      }
-    }
+  // OnSelect(hero: Hero) {
+  //   this.selectedHero = hero;
+  //   this.messagesService.addMessage(`HeroService: Clicked on: ${hero.id} ${hero.name}`);
+  // }
+
+  // Get data async from dataserver
+  // Subscribe => Wait until method has been completed, then perform action
+  
+
+  // HandleClicked() {
+  //   if (this.selectedHero) {
+  //     if (this.clicked % 2 === 0) {
+  //       this.selectedHero.imagePath = "http://placekitten.com/400/600"
+  //       this.isImageVisible = true;
+  //     }
+  //     else {
+  //       this.selectedHero.imagePath = "http://placekitten.com/600/400"
+  //       this.isImageVisible = false;
+  //     }
+  //   }
     
 
-    this.clicked++;
-  }
+  //   this.clicked++;
+  // }
 
 }
