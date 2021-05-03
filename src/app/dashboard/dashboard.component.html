@@ -5,3 +5,12 @@
         {{ hero.name}}
     </a>
 </div>
+
+
+<p>Top Powers</p>
+
+<div class="heroes-menu">
+    <a *ngFor="let superpower of superpowers" routerLink="/detail/{{superpower.id}}">
+        {{ superpower.name}}
+    </a>
+</div>

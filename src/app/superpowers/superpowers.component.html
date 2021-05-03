@@ -1,0 +1,10 @@
+<h2>My Superpowers</h2>
+
+<ul class="superpowers">
+    <li *ngFor="let superpower of superPowers"
+    [class.selected]="superpower === selectedSuperPower">
+        <a routerLink="/superpowers/{{superpower.id}}">
+            <span class="badge">{{superpower.id}} </span> {{superpower.name}}
+        </a>
+    </li>
+</ul>
