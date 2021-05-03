@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import {Hero} from './hero';
@@ -9,18 +10,22 @@ import {HEROES} from './mock-heroes';
 })
 export class HeroService {
 
-  // Typescript voor: Task<Hero> GetHero (int id) {...}
-  getHero(id: number): Observable<Hero> {
-    const hero = HEROES.find(x => x.id === id) as Hero;
-    this.messagesService.addMessage(`HeroService: Fetched hero id: ${id}`);
+  
 
-    return of(hero);
-  }
+  constructor(private messagesService: MessagesService, private http: HttpClient) { }
+    private heroesUrl = 'api/heroes';
 
-  constructor(private messagesService: MessagesService) { }
+    // Typescript voor: Task<Hero> GetHero (int id) {...}
+    getHero(id: number): Observable<Hero> {
+      const hero = HEROES.find(x => x.id === id) as Hero;
+      this.messagesService.addMessage(`HeroService: Fetched hero id: ${id}`);
+
+      return of(hero);
+    }
 
   getHeroes(): Observable<Hero[]>{
-    const heroes = of(HEROES); 
+    // Make Http API call => Get array of heroes from specified URL
+    const heroes = this.http.get<Hero[]>(this.heroesUrl);
     this.messagesService.addMessage('HeroService: Fetched heroes');
     return heroes;   
   }
