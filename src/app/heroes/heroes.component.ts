@@ -33,10 +33,31 @@ constructor(
       .subscribe(x => this.heroes = x);
   }
 
+
+  // voorbeeld van defensief coderen: de gebruiker niet vertrouwen vb. trim, if statement...
+  add(name: string) {
+    name = name.trim();
+    if (!name) {return;}
+    // dwz:'is uw string leeg, stop dan de methode en ga 1 niveau hoger'
+    // nadien gewoon verder coderen zonder een niveau dieper te hoeven gaan
+
+    this.heroService.addHero({name} as Hero)
+        .subscribe(x => this.heroes.push((x)));
+  }
+
+  deleteHero(hero: Hero) {
+    if (!hero) {return;}
+
+    this.heroService.deleteHero(hero)
+          .subscribe(() => this.heroes = this.heroes.filter(x => x != hero));
+  }
+
+
+
   // OnSelect(hero: Hero) {
   //   this.selectedHero = hero;
   //   this.messagesService.addMessage(`HeroService: Clicked on: ${hero.id} ${hero.name}`);
-  // }
+  //}
 
   // Get data async from dataserver
   // Subscribe => Wait until method has been completed, then perform action

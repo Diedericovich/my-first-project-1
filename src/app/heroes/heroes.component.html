@@ -1,11 +1,24 @@
 <h2>My Heroes</h2>
 
+<div>
+    <label for="new-hero">Hero name:</label>
+    <input for="new-hero" type="text" #heroName />
+
+    <button class="add-button"
+            (click)="add(heroName.value); heroName.value=''">
+            <!-- Na dat we de value toegevoegd hebben, de value terug leeg maken met lege string -->
+        Add hero
+        </button>
+</div>
+
+
     <ul class="heroes">
         <li *ngFor="let hero of heroes" 
         [class.selected]="hero === selectedHero" >      
             <a routerLink="detail/{{hero.id}}">
                 <span class="badge">{{ hero.id | mijnpipe}} </span> {{ hero.name | titlecase}}
             </a>
+            <button class="delete" title="delete hero" (click)="deleteHero(hero)">X</button>
         </li>
     </ul>
 
@@ -14,9 +27,3 @@
         <button (click)="HandleClicked()">Click me</button>
     </div> -->
 
-<!-- <div *ngIf="selectedHero">
-    <div *ngIf="isImageVisible">
-        Property Binding
-        <img [src]="selectedHero.imagePath" />
-    </div>
-</div> -->

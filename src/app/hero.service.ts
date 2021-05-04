@@ -8,6 +8,7 @@ import { MessagesService } from './messages.service';
   providedIn: 'root'
 })
 export class HeroService {
+ 
 
 
   constructor(private messagesService: MessagesService, private http: HttpClient) { }
@@ -34,8 +35,21 @@ export class HeroService {
     return heroes;   
   }
 
+  addHero(hero: Hero): Observable<Hero> {
+    this.messagesService.addMessage(`HeroService: Add hero : ${hero.name}`);
+    return this.http.post<Hero>(this.heroesUrl, hero, this.httpOptions);
+  }
+
   updateHero(hero: Hero| undefined): Observable<any> {
+    this.messagesService.addMessage(`HeroService: Update hero : ${hero?.name}`);
     // Put => update existing data
     return this.http.put(this.heroesUrl, hero, this.httpOptions);
   }
+
+  deleteHero(hero: Hero): Observable<Hero> {
+    this.messagesService.addMessage(`HeroService: Delete hero : ${hero.name}`);
+    const url = `${this.heroesUrl}/${hero.id}`;
+    return this.http.delete<Hero>(url, this.httpOptions);
+  }
+ 
 }
