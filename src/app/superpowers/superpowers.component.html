@@ -1,10 +1,28 @@
 <h2>My Superpowers</h2>
 
+<div>
+    <label for="new-superpower">Superpower name:</label>
+    <input for="new-superpower" type="text"  [(ngModel)]="newSuperpower.name" placeholder="name"  />
+
+    <label for="new-superpower">Superpower type:</label>
+    <input for="new-superpower" type="text"  [(ngModel)]="newSuperpower.type" placeholder="type" />
+
+    <label for="new-superpower">Superpower Overpowered?</label>
+    <input for="new-superpower" type="checkbox"  [(ngModel)]="newSuperpower.isOverpowered" placeholder="isOverpowered"/>
+
+    <button class="add-button"
+            (click)="add(newSuperpower); newSuperpower">
+            <!-- Na dat we de value toegevoegd hebben, de value terug leeg maken met lege string -->
+        Add Superpower! BAM!
+        </button>
+</div>
+
 <ul class="superpowers">
     <li *ngFor="let superpower of superPowers"
     [class.selected]="superpower === selectedSuperPower">
         <a routerLink="/superpowers/{{superpower.id}}">
             <span class="badge">{{superpower.id}} </span> {{superpower.name}}
         </a>
+        <button class="delete" title="delete superpower" (click)="deleteSuperPower(superpower)">X</button>
     </li>
 </ul>

@@ -7,6 +7,17 @@
     </div>
     <div>
         <label for="superpower-name">Superpower name: </label>
-        <input id="superpower-name" [(ngModel)]="superpower.name" placeholder="name">
+        <input id="superpower-name" type="text" [(ngModel)]="superpower.name" placeholder="name">
     </div>
+    <div>
+        <label for="superpower-type">Superpower type: </label>
+        <input id="superpower-type" type="text" [(ngModel)]="superpower.type" placeholder="type">
+    </div>
+    <div>
+        <label for="superpower-name">Overpowered: </label>
+        <input id="superpower-name" type="checkbox" [(ngModel)]="superpower.name" placeholder="name">
+    </div>
+
+    <button (click)="save()">Save</button>
+
 </div>

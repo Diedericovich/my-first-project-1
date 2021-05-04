@@ -33,4 +33,11 @@ export class SuperpowerDetailComponent implements OnInit {
     this.location.back();
   }
 
+  save(): void {
+    this.superpowerService.updateSuperPower(this.superpower)
+        .subscribe(() =>this.goBack())
+  }
+
+
+
 }

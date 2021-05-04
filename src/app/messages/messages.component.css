@@ -1,0 +1,25 @@
+/* MessageComponent's private CSS styles */
+
+h2 {
+    text-align: center;
+    color: brown;
+    text-shadow: black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size:xx-large;
+    padding-bottom: 1em;
+    
+}
+
+ul {
+    text-align: center;
+    list-style-type: none;
+}
+
+.list {
+    color: brown;
+    font-weight: 600;
+    font-style: italic;
+}
+.button {
+    text-align: center;
+}

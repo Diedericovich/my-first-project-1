@@ -1,11 +1,25 @@
-<h2>Messages</h2>
+<div class="container">
+    <div class="row">
+        <div class="col 6">
+            <h2>Messages</h2>
+    
+            <div class="button">
+                <button (click)="messagesService.clearMessages()">
+                    Clear Messages! Shoo Shoo!
+                </button>
+            </div>
+        </div>
+        <div class="col 6">
+            <div class="list">
+                <ul >
+                    <li *ngFor="let message of messagesService.messages">
+                        {{ message}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
-<button (click)="messagesService.clearMessages()">
-    Clear Messages
-</button>
 
-<ul>
-    <li *ngFor="let message of messagesService.messages">
-        {{ message}}
-    </li>
-</ul>
+

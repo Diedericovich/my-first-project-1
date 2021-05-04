@@ -7,7 +7,7 @@
     <button class="add-button"
             (click)="add(heroName.value); heroName.value=''">
             <!-- Na dat we de value toegevoegd hebben, de value terug leeg maken met lege string -->
-        Add hero
+        Add hero! WOOSH!!
         </button>
 </div>
 
@@ -15,7 +15,7 @@
     <ul class="heroes">
         <li *ngFor="let hero of heroes" 
         [class.selected]="hero === selectedHero" >      
-            <a routerLink="detail/{{hero.id}}">
+            <a routerLink="/detail/{{hero.id}}">
                 <span class="badge">{{ hero.id | mijnpipe}} </span> {{ hero.name | titlecase}}
             </a>
             <button class="delete" title="delete hero" (click)="deleteHero(hero)">X</button>
